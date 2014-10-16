@@ -1,35 +1,43 @@
+#
 #  Exemple de Makefile
-#  Cree l'executable 'myprog' a partir des fichiers 'personne.c' et 'main.c'
 #  Eric Lecolinet - Reda Dehak - Telecom ParisTech
 #  INF720 - TP C - http://www.telecom-paristech.fr/~elc
 
 
 # Nom de l'executable a creer
-PROG= prog
+PROG= tri
+
 
 # Fichiers source (NE PAS METTRE les .h ni les .o, SEULEMENT les .c)
-SOURCES= tab2.c
+SOURCES= tri.c donnees.c
+
 
 # Fichiers objets (ne pas modifier, sauf si l'extension n'est pas .c)
 OBJETS=${SOURCES:%.c=%.o}
 
+
 # Compilateur C
 CC= gcc
+
 
 # Options du compilateur C
 # -g permet de debugger, -O optimise, -Wall affiche les erreurs
 # Exemple pour Qt: CFLAGS= -g -Wall -I/usr/local/qt/include
 CFLAGS= -g -Wall
 
+
 # Editeur de lien
 LD=gcc
+
 
 # Options de l'editeur de liens
 LDFLAGS= 
 
+
 # Librairies a utiliser
 # Exemple pour Qt: LDLIBS = -L/usr/local/qt/lib -lqt
-LDLIBS= /cal/homes/iyajid/inf720/tab2.h
+LDLIBS= 
+
 
 ##########################################
 
@@ -38,17 +46,20 @@ LDLIBS= /cal/homes/iyajid/inf720/tab2.h
 
 all: ${PROG}
 
-${PROG}: depend ${OBJETS}
+
+${PROG}: depend-${PROG} ${OBJETS}
 	${LD} -o ${PROG} ${LDFLAGS} ${OBJETS} ${LDLIBS}
+
 
 clean:
 	-@$(RM) $(PROG) *.o depend core 1>/dev/null 2>&1
+
 
 # Gestion des dependances : creation automatique des dependances en utilisant 
 # l'option -MM de gcc (attention certains compilos n'ont pas cette option)
 
 depend:
-	${CC} -MM ${SOURCES} > depend
+	${CC} -MM ${SOURCES} > depend-${PROG}
 
 ###########################################
 
@@ -71,7 +82,8 @@ depend:
 .c.o:
 	$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
 
+
 #############################################
 
 # Inclusion du fichier des dependances
--include depend
+-include depend-${PROG}
