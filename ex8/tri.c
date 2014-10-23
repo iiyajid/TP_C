@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "tri.h"
 #include "donnees.h"
 
@@ -16,6 +17,22 @@ void Trier(ITEM items[], int nb_items)
   int i, j;
   ITEM swap;
   
+  for (i = 0; i < nb_items; i++)
+    for (j = i + 1; j < nb_items; j++)
+      if (items[i].age > items[j].age) {
+	swap = items[j];
+	items[j] = items[i];
+	items[i] = swap;
+      }
+}
+
+/* ===================================================================== */
+void Trier2(ITEM items[], int nb_items, char *p1, char *p2)
+{
+  int i, j;
+  ITEM swap;
+  int comp = strcmp(*p1, *p2);
+
   for (i = 0; i < nb_items; i++)
     for (j = i + 1; j < nb_items; j++)
       if (items[i].age > items[j].age) {
@@ -64,5 +81,5 @@ int main(int argc, char *argv[])
   exit(0);
 }
 
-/* ====================================================== The End ======uuu
+/* ====================================================== The End ====== */
 

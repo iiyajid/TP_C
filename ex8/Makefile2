@@ -36,7 +36,7 @@ LDFLAGS=
 
 # Librairies a utiliser
 # Exemple pour Qt: LDLIBS = -L/usr/local/qt/lib -lqt
-LDLIBS=
+LDLIBS= ~/inf720_UPDATED/ex8/tri.h ~/inf720_UPDATED/ex8/donnees.h 
 
 
 ##########################################
@@ -47,7 +47,7 @@ LDLIBS=
 all: ${PROG}
 
 
-${PROG}: depend ${OBJETS}
+${PROG}: depend-${PROG} ${OBJETS}
 	${LD} -o ${PROG} ${LDFLAGS} ${OBJETS} ${LDLIBS}
 
 
@@ -59,7 +59,7 @@ clean:
 # l'option -MM de gcc (attention certains compilos n'ont pas cette option)
 
 depend:
-	${CC} -MM ${SOURCES} > depend-$(PROG) 
+	${CC} -MM ${SOURCES} > depend-${PROG}
 
 ###########################################
 
@@ -86,4 +86,4 @@ depend:
 #############################################
 
 # Inclusion du fichier des dependances
--include depend
+-include depend-${PROG}
