@@ -15,13 +15,17 @@
 void Lire(ITEM items[], int *nb_items)
 {
   int i;
+  char buffer[1111] = NULL;
 
   printf("*** Entrer les donnees et taper . pour terminer\n\n");
 
   for (i = 0; TRUE; i++) {
 
     printf("> nom    : ");
-    scanf("%s", items[i].nom);
+    fgets(buffer,20,stdin);
+    //fgets(items[i].nom,20,stdin);
+    fflush(stdin);
+    //scanf("%s", items[i].nom);
     if (items[i].nom[0] == '.') break;
 
     printf("> prenom : ");
