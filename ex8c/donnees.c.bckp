@@ -25,22 +25,28 @@ int isInt(char *num){
     return isNum;
 }
 
-void Lire(ITEM items[], int *nb_items)
+//Ajout en debut
+ITEM * Lire(ITEM *items)
 {
-  int i;
   char age[6] = "aaaaa";
+  ITEM *nv = NULL;
+
+  if( (nv = malloc(sizeof(ITEM))) == NULL ){
+      printf("Espace memoire insuffisant\n");
+      return NULL;
+      exit(1);
+  }
 
   printf("*** Entrer les donnees et taper . pour terminer\n\n");
-
-  for (i = 0; TRUE; i++) {
+  //while ( items != NULL){
 
     printf("> nom    : ");
-    scanf("%20s", items[i].nom);
-    if (items[i].nom[0] == '.') break;
+    scanf("%20s", nv->nom);
+    //if (nv->nom[0] == '.'); 
 
     printf("> prenom : ");
     scanf("%*[^\n]\n");
-    scanf("%20s", items[i].prenom);
+    scanf("%20s", nv->prenom);
 
     printf("> age    : ");
     scanf("%*[^\n]\n");
@@ -51,24 +57,33 @@ void Lire(ITEM items[], int *nb_items)
         scanf("%*[^\n]\n");
         scanf("%6s", age);
     }
-    items[i].age = atoi(age);
+    nv->age = atoi(age);
     putchar('\n');
-  }
-  printf("--- Fin de la saisie\n\n");
-  *nb_items = i;
+  
+  //printf("--- Fin de la saisie\n\n");
+  if( items == NULL )
+      return nv;
+  else{
+      nv->suiv = items;
+      return nv;
+    }
+  
+return nv;
+
+
 }
 
 /* ===================================================================== */
 
-void Afficher(ITEM items[], int nb_items)
+void Afficher(ITEM *items)
 {
-  int i;
   printf("\n*** Liste des donnees :\n\n");
 
-  for (i = 0; i < nb_items; i++) {
-    printf("Nom    : %s \n",   items[i].nom);
-    printf("Prenom : %s \n",   items[i].prenom);
-    printf("Age    : %d \n\n", items[i].age);
+  while ( items != NULL){
+    printf("Nom    : %s \n",   items->nom);
+    printf("Prenom : %s \n",   items->prenom);
+    printf("Age    : %d \n\n", items->age);
+    items = items->suiv;
   }
 }
 
