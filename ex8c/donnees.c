@@ -64,7 +64,7 @@ ITEM * Lire(ITEM *tete)
   putchar('\n');
   //**********Fin de lecture********** 
   nv->suiv = NULL;
-  
+
   return retour;
 
 }

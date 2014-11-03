@@ -16,8 +16,11 @@ int main() {
   char *chaine;
   chaine = (char *) malloc(100*sizeof(char));
   printf("Entrez une chaine de caractères: \n");
-  gets (chaine);
+  scanf ("%100[^\n]%*c", chaine);
+  //[^\n]:permet de lire tous les caractères entrés qui ne sont pas '\n'.
+  //'*c' permet de se débarasser de tous les caractères qui suivent le '\n'.
   printf("longueur de %s = %d \n", chaine, slong(chaine));
 
+  free(chaine);
   return 0;
 }

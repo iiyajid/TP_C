@@ -1,0 +1,21 @@
+TP réalisé par ISSAME YAJID.
+
+Ce fichier commence par traiter les réponses aux différentes questions posées dans les différents exercices.
+
+Ex1:
+La première ligne ajoutée concerne la déclaration de la librairie contenant printf(), la deuxième ligne ajoutée concerne la valeur de retour de la fonction main() qui a été déclarée comme étant int.
+
+Ex3:
+La fontion de bibliothèque qui permet de calculer la longeur d'une chaine de caractères est strlen().
+
+Ex4:
+Si la chaine entrée est trop grande, le programme risque de retourner un segmentation fault. Afin de palier à ce problème, il est possible de lire un nombre limité de caractères en utilisant par exemple scanf("%100s", chaine). En utilisant la dernière solution, toute chaine plus longue que 100 caractères retournera un nombre de caractères égal à 100.
+
+Ex5:
+La fontion de bibliothèque qui permet de transformer une chaine de caractères en entier est atoi() : ASCII To Int.
+Le symbole * est interpreté par le shell comme etant un wildcard nous proposons alors les deux solutions suivantes:
+ 1: utiliser x au lieu de *
+ 2: ecrire \* au lieu de *
+
+Ex8 (gdb 5):
+d) Afin de pouvoir sauvgarder des valeurs dans le fichier, ce dernier doit etre créé au préalable et doit aussi offrire les droit de lecture et ecriture au programme.

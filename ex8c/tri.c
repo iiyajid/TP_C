@@ -31,16 +31,32 @@ int compareAgeDec(ITEM *a, ITEM *b){
     return -(a->age - b->age);
 }
 
-ITEM *listSwap( ITEM * i1, ITEM * i2){
-    i1->suiv = i2->suiv;
-    i2->suiv = i1;
+void listSwap( ITEM * i1, ITEM * i2){
+    ITEM *tmp;
+
+    tmp = malloc(sizeof(ITEM));
+
+    strncpy(tmp->nom,i1->nom,30);
+    strncpy(tmp->prenom,i1->prenom,20);
+    tmp->age = i1->age;
+
+    strncpy(i1->nom,i2->nom,30);
+    strncpy(i1->prenom,i2->prenom,20);
+    i1->age = i2->age;
     
-    return i2;
+    strncpy(i2->nom,tmp->nom,30);
+    strncpy(i2->prenom,tmp->prenom,20);
+    i2->age = tmp->age;
+
+    //i1->suiv = i2->suiv;
+    //i2->suiv = i1;
+    
+    //return i2;
 }
 
 /* ===================================================================== */
 ITEM * Trier(ITEM *items, int (*compar)(ITEM *,ITEM *)){
-  ITEM *tete, *listI, *listJ;
+  ITEM *tete, *listJ;
   int change = 1;
 
   if( (tete = malloc(sizeof(ITEM))) == NULL){
@@ -53,14 +69,12 @@ ITEM * Trier(ITEM *items, int (*compar)(ITEM *,ITEM *)){
 
       while( change ){
           change = 0;
-          listI = tete;
           listJ = tete->suiv;
           while( listJ->suiv != NULL ){
               if(compar(listJ,listJ->suiv) > 0){
-                  listI->suiv = listSwap(listJ,listJ->suiv);
+                  listSwap(listJ,listJ->suiv);
                   change = 1;
               }
-              listI = listJ;
               if (listJ->suiv != NULL )
                   listJ = listJ->suiv;
           }
@@ -84,10 +98,9 @@ void Choix(ITEM *items)
     printf("- 4 ou D - alphabetique decroissant sur le Nom\n");
     printf("- 5 ou E - alphabetique croissant sur le Prenom\n");
     printf("- 6 ou F - alphabetique decroissant sur le Prenom\n");
-    printf("----\n");
-    printf("- 7 ou G - ajouter element en fin de liste\n");
-    printf("- 8 ou F - afficher sans trier\n");
-    printf("- 0 ou Q - sortir\n");
+    printf("**7 ou G - ajouter element en fin de liste\n");
+    printf("**8 ou F - afficher les elements sans trier\n");
+    printf("**0 ou Q - sortir\n");
 
     scanf("%s", cas);
 
@@ -131,17 +144,10 @@ int main(int argc, char *argv[])
   ITEM * items;
 
   items = NULL;
-  int continuer = 1;
-
-  while (continuer){
-      items = Lire(items);
-      printf("Continuer (0/1)?  :");
-      scanf("%d",&continuer);
-  }
+  items = Lire(items);
   while(TRUE){
     Choix(items);
   }
-
 
   exit(0);
 }

@@ -1,2 +1,0 @@
-tri.o: tri.c tri.h donnees.h
-donnees.o: donnees.c tri.h donnees.h

@@ -1,22 +1,5 @@
 #include <stdio.h>
 
-//similaire à atoi()
-//float calc0(int a, int b, int op){
-//    switch (op){
-//    case 1: return a+b;
-//    case 2: return a-b;
-//    case 3: return a*b;
-//    case 4: return a/b;
-//    }
-//    return -1;
-//}
-
-//int operation(){
-//    int op ;
-//    printf("Choisissez un operateur arithmetique: \n1 : +\n2 : -\n3 : *\n4 : /\n");
-//    scanf ("%d",&op);
-//    return op;
-//}
 
 float calc(int a, int b, int op){
     switch (op){
@@ -30,6 +13,7 @@ float calc(int a, int b, int op){
 }
 
 
+//similaire à atoi()
 int s2i(char * s){
     int entier = 0;
 
