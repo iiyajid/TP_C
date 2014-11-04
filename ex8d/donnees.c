@@ -21,7 +21,6 @@ int isInt(char *num){
         }
         num++;
     }
-    printf("%d %d",atoi(num), isNum);
     return isNum;
 }
 

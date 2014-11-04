@@ -101,28 +101,19 @@ int main(int argc, char *argv[])
   nb_items = malloc(sizeof(int));
   *nb_items = 0;
   
-  printf("%d\n", *nb_items);
   Lire(items, nb_items);
-  printf("%d\n", *nb_items);
   while(TRUE){
       f = fopen("file.txt", "r");
       if(*nb_items>0)
           while( fread(items+(*nb_items), sizeof(ITEM), 1, f) )
               (*nb_items)++;
-      printf("%d", *nb_items);
       fclose(f);
       Choix(items, *nb_items);
       Afficher(items, *nb_items);
-      printf("%d\n", *nb_items);
       f = fopen("file.txt", "w");
       fwrite(items, *nb_items, sizeof(ITEM), f);
       fclose(f);
   }
-
-  //printf("%d", *nb_items);
-  //f = fopen("file.txt", "w");
-  //fwrite(items, *nb_items, sizeof(ITEM), f);
-  //fclose(f);
 
   exit(0);
 }

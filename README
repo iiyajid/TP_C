@@ -18,4 +18,5 @@ Le symbole * est interpreté par le shell comme etant un wildcard nous proposons
  2: ecrire \* au lieu de *
 
 Ex8 (gdb 5):
+Après ajout de la fonction de vérification de saisie de l'age 'isInt()', le caractère '.' est interprété comme une virgule lors de l'invocation de 'isInt()' il faut donc entrer le '.' lorsque le nom est demandé car .
 d) Afin de pouvoir sauvgarder des valeurs dans le fichier, ce dernier doit etre créé au préalable et doit aussi offrire les droit de lecture et ecriture au programme.
