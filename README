@@ -1,6 +1,6 @@
 TP réalisé par ISSAME YAJID.
 
-Ce fichier commence par traiter les réponses aux différentes questions posées dans les différents exercices.
+Ce fichier traite les réponses aux différentes questions posées dans les différents exercices.
 
 Ex1:
 La première ligne ajoutée concerne la déclaration de la librairie contenant printf(), la deuxième ligne ajoutée concerne la valeur de retour de la fonction main() qui a été déclarée comme étant int.
@@ -18,5 +18,5 @@ Le symbole * est interpreté par le shell comme etant un wildcard nous proposons
  2: ecrire \* au lieu de *
 
 Ex8 (gdb 5):
-Après ajout de la fonction de vérification de saisie de l'age 'isInt()', le caractère '.' est interprété comme une virgule lors de l'invocation de 'isInt()' il faut donc entrer le '.' lorsque le nom est demandé car .
+Après ajout de la fonction de vérification de saisie de l'age 'isInt()', le caractère '.' est interprété comme une virgule lors de l'invocation de 'isInt()' il faut donc entrer le '.' lorsque le nom est demandé.
 d) Afin de pouvoir sauvgarder des valeurs dans le fichier, ce dernier doit etre créé au préalable et doit aussi offrire les droit de lecture et ecriture au programme.
